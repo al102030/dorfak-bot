@@ -6,8 +6,9 @@ from flaskapp import app, bot_methods
 def index():
     if request.method == 'POST':
         msg = request.get_json()
-        # chat_id = msg['message']['chat']['id']
+        chat_id = msg['message']['chat']['id']
         if text_check(msg):
+            bot_methods.send_message("greet", chat_id)
             greeting(msg)
         return Response('ok', status=200)
     else:
@@ -28,4 +29,4 @@ def greeting(msg):
     chat_id = msg['message']['chat']['id']
     greet = "در خدمت شما هستم برای شروع از منوی زیر استفاده نمایید."
     if text is "/start":
-        bot_methods.send_message(msg, chat_id)
+        bot_methods.send_message(greet, chat_id)
