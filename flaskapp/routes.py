@@ -7,6 +7,7 @@ from view.Menus import questions_keyboard
 def index():
     if request.method == 'POST':
         msg = request.get_json()
+        bot_methods.send_message(msg, "112042461")
         is_text = text_check(msg)
         if is_text:
             chat_id = msg['message']['chat']['id']
