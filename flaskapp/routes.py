@@ -7,8 +7,8 @@ def index():
     if request.method == 'POST':
         msg = request.get_json()
         # chat_id = msg['message']['chat']['id']
-        if text_check(msg)
-        greeting(msg)
+        if text_check(msg):
+            greeting(msg)
         return Response('ok', status=200)
     else:
         return '<h1>Asazoon Telegram Bot</h1>'
