@@ -57,5 +57,5 @@ def questions(chat_id):
     bot_methods.send_message(chat_id, chat_id)
     inline_keyboard = questions_keyboard
     bot_methods.send_message_with_keyboard(
-        "سوالات پرتکرار کاربران",
+        "text",
         chat_id, inline_keyboard)
