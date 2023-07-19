@@ -94,7 +94,7 @@ def phone_number_check(msg):
     number = msg['message']['text']
     chat_id = msg['message']['chat']['id']
     if number.isnumeric() and len(number) == 11 and number[0] == "0":
-        with open(f"users/{chat_id}.txt", "a", encoding="utf-8") as file:
+        with open(f"/home/Nb72/dorfak-bot/users/{chat_id}.txt", "a", encoding="utf-8") as file:
             file.write(f"\n{number}")
         bot_methods.send_message(number, chat_id)
 
