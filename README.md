@@ -1,2 +1,2 @@
 # dorfak-bot
-A Intelligence Telegram Bot
+An Intelligence Telegram Bot
