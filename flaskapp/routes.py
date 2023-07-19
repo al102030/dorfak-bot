@@ -11,6 +11,7 @@ def index():
         msg = request.get_json()
         is_text = text_check(msg)
         if is_text:
+            phone_number_check(msg)
             chat_id = msg['message']['chat']['id']
             if is_text == "/start":
                 greeting(msg)
@@ -87,3 +88,14 @@ def answers_questions(msg):
     bot_methods.send_message(
         answer, callback_from_id)
     return True
+
+
+def phone_number_check(msg):
+    number = msg['message']['text']
+    chat_id = msg['message']['chat']['id']
+    if number.isnumeric() & len(number) == 12 and number[0] == 0:
+        bot_methods.send_message(number, chat_id)
+
+
+def name_check(msg):
+    pass
