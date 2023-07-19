@@ -48,8 +48,9 @@ def greeting(msg):
 def enroll(chat_id):
     user_path = os.path.join(
         "/home/Nb72/dorfak-bot/users", str(chat_id)+".txt")
-    with open(user_path, "w", encoding="utf-8") as file:
-        file.write(str(chat_id))
+    if not os.path.exists(user_path):
+        with open(user_path, "w", encoding="utf-8") as file:
+            file.write(str(chat_id))
     bot_methods.send_message("لطفا شماره همراه خود را وارد نمایید.", chat_id)
 
 
@@ -93,12 +94,27 @@ def answers_questions(msg):
 def phone_number_check(msg):
     number = msg['message']['text']
     chat_id = msg['message']['chat']['id']
+    user_path = os.path.join(
+        "/home/Nb72/dorfak-bot/users", str(chat_id)+".txt")
     if number.isnumeric() and len(number) == 11 and number[0] == "0":
-        with open(f"/home/Nb72/dorfak-bot/users/{chat_id}.txt", "a", encoding="utf-8") as file:
-            file.write(f"\n{number}")
+        is_in_file = False
+        with open(user_path, "r", encoding="utf-8") as file:
+            for line in file:
+                if number in line:
+                    is_in_file = True
+                    break
+        if not is_in_file:
+            with open(f"/home/Nb72/dorfak-bot/users/{chat_id}.txt", "a", encoding="utf-8") as file:
+                file.write(f"\n{number}")
+            bot_methods.send_message(
+                "شماره تلفن همراه شما با موفقیت ثبت کردید.\n لطفا نام و نام خانوادگی خود را وارد نمایید.", chat_id)
+        else:
+            bot_methods.send_message(
+                "شماره تلفن همراه شما قبلا ثبت شده است.\n لطفا نام و نام خانوادگی خود را وارد نمایید.", chat_id)
+    else:
         bot_methods.send_message(
-            "شماره تلفن همراه شما با موفقیت ثبت کردید.\n لطفا نام و نام خانوادگی خود را وارد نمایید.", chat_id)
+            "شماره ای که وارد کرده اید نادرست است لطفا شماره تلفن همراه خود را به صورت صحیح وارد کنید\n مانند نمونه زیر\n نمونه: 09123456789", chat_id)
 
 
-def name_check(msg):
+def name_check():
     pass
