@@ -93,7 +93,7 @@ def answers_questions(msg):
 def phone_number_check(msg):
     number = msg['message']['text']
     chat_id = msg['message']['chat']['id']
-    if number.isnumeric() & len(number) == 12 and number[0] == 0:
+    if number.isnumeric() & len(number) == 11 and number[0] == 0:
         bot_methods.send_message(number, chat_id)
 
 
