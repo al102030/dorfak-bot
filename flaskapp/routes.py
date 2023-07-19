@@ -8,7 +8,6 @@ def index():
         msg = request.get_json()
         chat_id = msg['message']['chat']['id']
         if text_check(msg):
-            bot_methods.send_message("greet", chat_id)
             greeting(msg)
         return Response('ok', status=200)
     else:
@@ -28,5 +27,5 @@ def greeting(msg):
     text = msg['message']['text']
     chat_id = msg['message']['chat']['id']
     greet = "در خدمت شما هستم برای شروع از منوی زیر استفاده نمایید."
-    if text is "/start":
+    if text == "/start":
         bot_methods.send_message(greet, chat_id)
