@@ -18,7 +18,7 @@ def index():
                 pass
             elif is_text == "/contacts":
                 pass
-            elif is_text == "/questions":
+            elif is_text == "/question":
                 questions(chat_id)
         return Response('ok', status=200)
     else:
