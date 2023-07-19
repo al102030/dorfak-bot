@@ -17,7 +17,7 @@ def index():
             elif is_text == "/link":
                 store_links(chat_id)
             elif is_text == "/contacts":
-                pass
+                contact(chat_id)
             elif is_text == "/question":
                 questions(chat_id)
         elif "callback_query" in msg:
