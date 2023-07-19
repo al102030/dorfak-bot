@@ -96,7 +96,8 @@ def phone_number_check(msg):
     if number.isnumeric() and len(number) == 11 and number[0] == "0":
         with open(f"/home/Nb72/dorfak-bot/users/{chat_id}.txt", "a", encoding="utf-8") as file:
             file.write(f"\n{number}")
-        bot_methods.send_message(number, chat_id)
+        bot_methods.send_message(
+            "شماره تلفن همراه شما با موفقیت ثبت کردید.\n لطفا نام و نام خانوادگی خود را وارد نمایید.", chat_id)
 
 
 def name_check(msg):
