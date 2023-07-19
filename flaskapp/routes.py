@@ -1,6 +1,6 @@
 from flask import request, Response
 from flaskapp import app, bot_methods
-from view.Menus import questions_keyboard
+from view.Menus import questions_keyboard, answers
 
 
 @app.route("/", methods=["GET", "POST"])
@@ -10,7 +10,6 @@ def index():
         is_text = text_check(msg)
         if is_text:
             chat_id = msg['message']['chat']['id']
-            # bot_methods.send_message(chat_id, chat_id)
             if is_text == "/start":
                 greeting(msg)
             elif is_text == "/enroll":
@@ -21,6 +20,8 @@ def index():
                 pass
             elif is_text == "/question":
                 questions(chat_id)
+        elif "callback_query" in msg:
+            answers_questions(msg)
         return Response('ok', status=200)
     else:
         return '<h1>Asazoon Telegram Bot</h1>'
@@ -54,8 +55,20 @@ def contact():
 
 
 def questions(chat_id):
-    bot_methods.send_message(chat_id, chat_id)
     inline_keyboard = questions_keyboard
     bot_methods.send_message_with_keyboard(
         "سوالات پرتکرار کاربران",
         chat_id, inline_keyboard)
+
+
+def answers_questions(msg):
+    # callback_id = msg['callback_query']['id']
+    callback_from_id = msg['callback_query']['from']['id']
+    callback_data = msg['callback_query']['data']
+    for item in answers:
+        if item == callback_data:
+            answer = answers[item]
+            break
+    bot_methods.send_message(
+        answer, callback_from_id)
+    return True
