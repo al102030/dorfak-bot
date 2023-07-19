@@ -1,6 +1,6 @@
 from flask import request, Response
 from flaskapp import app, bot_methods
-from view.Menus import questions_keyboard, answers
+from view.Menus import questions_keyboard, admins_contact, answers
 
 
 @app.route("/", methods=["GET", "POST"])
@@ -51,8 +51,16 @@ def store_links(chat_id):
     bot_methods.send_message(link, chat_id)
 
 
-def contact():
-    pass
+def contact(chat_id):
+    inline_keyboard = admins_contact
+    bot_methods.send_message_with_keyboard(
+        """
+        هلدینگ دیجیتال مارکتینگ آسازون به عنوان اولین سرویس شتابدهنده ی فروش، ارایه دهنده روش هایی موثر برای افزایش فروش است.
+        آدرس آسازون: رشت، فاز یک معلم، قبل از استانداری، ساختمان قصر سفید، طبقه 4، واحد7، شرکت ایده پردازان درفک
+
+تلفن: 01333251880
+        """,
+        chat_id, inline_keyboard)
 
 
 def questions(chat_id):
