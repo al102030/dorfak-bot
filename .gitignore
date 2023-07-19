@@ -13,7 +13,6 @@ Pipfile.lock
 .gitignore
 .DS_Store
 token.py
-secrets.py
 *.lock
 build/
 develop-eggs/
