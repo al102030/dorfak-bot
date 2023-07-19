@@ -65,9 +65,9 @@ def answers_questions(msg):
     # callback_id = msg['callback_query']['id']
     callback_from_id = msg['callback_query']['from']['id']
     callback_data = msg['callback_query']['data']
-    for item in answers:
-        if item == callback_data:
-            answer = answers[item]
+    for key, value in answers.items():
+        if key == callback_data:
+            answer = value
             break
     bot_methods.send_message(
         answer, callback_from_id)
