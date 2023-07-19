@@ -1,3 +1,5 @@
+
+import os
 from flask import request, Response
 from flaskapp import app, bot_methods
 from view.Menus import questions_keyboard, admins_contact, answers
@@ -42,8 +44,12 @@ def greeting(msg):
     bot_methods.send_message(greet, chat_id)
 
 
-def enroll():
-    pass
+def enroll(chat_id):
+    user_path = os.path.join(
+        "/usr/share/nginx/html/static/", chat_id+".txt")
+    with open(user_path, 'wb') as file:
+        file.write(chat_id)
+    bot_methods.send_message("لطفا شماره همراه خود را وارد نمایید.", chat_id)
 
 
 def store_links(chat_id):
