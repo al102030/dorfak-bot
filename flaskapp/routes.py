@@ -10,7 +10,7 @@ def index():
         is_text = text_check(msg)
         if is_text:
             chat_id = msg['message']['chat']['id']
-            bot_methods.send_message(chat_id, chat_id)
+            # bot_methods.send_message(chat_id, chat_id)
             if is_text == "/start":
                 greeting(msg)
             elif is_text == "/enroll":
@@ -54,6 +54,7 @@ def contact():
 
 
 def questions(chat_id):
+    bot_methods.send_message(chat_id, chat_id)
     inline_keyboard = questions_keyboard
     bot_methods.send_message_with_keyboard(
         "سوالات پرتکرار کاربران",
