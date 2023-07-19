@@ -48,7 +48,7 @@ def enroll(chat_id):
     user_path = os.path.join(
         "/home/Nb72/dorfak-bot/users", str(chat_id)+".txt")
     with open(user_path, "w", encoding="utf-8") as file:
-        file.write(chat_id)
+        file.write(str(chat_id))
     bot_methods.send_message("لطفا شماره همراه خود را وارد نمایید.", chat_id)
 
 
