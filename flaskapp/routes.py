@@ -9,8 +9,8 @@ def index():
         msg = request.get_json()
         is_text = text_check(msg)
         if is_text:
-            bot_methods.send_message(msg, "112042461")
             chat_id = msg['message']['chat']['id']
+            bot_methods.send_message(msg, chat_id)
             if is_text == "/start":
                 greeting(msg)
             elif is_text == "/enroll":
