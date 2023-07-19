@@ -15,8 +15,7 @@ def index():
             elif is_text == "/enroll":
                 pass
             elif is_text == "/link":
-                link = "benjamin.aszn.ir"
-                bot_methods.send_message(link, chat_id)
+                store_links(chat_id)
             elif is_text == "/contacts":
                 pass
             elif is_text == "/question":
@@ -47,8 +46,9 @@ def enroll():
     pass
 
 
-def store_links():
-    pass
+def store_links(chat_id):
+    link = "benjamin.aszn.ir"
+    bot_methods.send_message(link, chat_id)
 
 
 def contact():
