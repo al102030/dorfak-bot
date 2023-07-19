@@ -1,14 +1,25 @@
 from flask import request, Response
 from flaskapp import app, bot_methods
+from view.Menus import questions_keyboard
 
 
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == 'POST':
         msg = request.get_json()
-        chat_id = msg['message']['chat']['id']
-        if text_check(msg):
-            greeting(msg)
+        is_text = text_check(msg)
+        if is_text:
+            chat_id = msg['message']['chat']['id']
+            if is_text == "/start":
+                greeting(msg)
+            elif is_text == "/enroll":
+                pass
+            elif is_text == "/link":
+                pass
+            elif is_text == "/contacts":
+                pass
+            elif is_text == "/questions":
+                questions(chat_id)
         return Response('ok', status=200)
     else:
         return '<h1>Asazoon Telegram Bot</h1>'
@@ -24,8 +35,25 @@ def text_check(msg):
 
 
 def greeting(msg):
-    text = msg['message']['text']
     chat_id = msg['message']['chat']['id']
     greet = "در خدمت شما هستم برای شروع از منوی زیر استفاده نمایید."
-    if text == "/start":
-        bot_methods.send_message(greet, chat_id)
+    bot_methods.send_message(greet, chat_id)
+
+
+def enroll():
+    pass
+
+
+def store_links():
+    pass
+
+
+def contact():
+    pass
+
+
+def questions(chat_id):
+    inline_keyboard = questions_keyboard
+    bot_methods.send_message_with_keyboard(
+        "سوالات پرتکرار کاربران",
+        chat_id, inline_keyboard)
