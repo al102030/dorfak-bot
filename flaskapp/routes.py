@@ -15,7 +15,8 @@ def index():
             if is_text == "/start":
                 greeting(msg)
             elif is_text == "/enroll":
-                enroll(chat_id)
+                pass
+                # enroll(chat_id)
             elif is_text == "/link":
                 store_links(chat_id)
             elif is_text == "/contacts":
