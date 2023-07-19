@@ -37,11 +37,11 @@ answers = {
 
 admins_contact = [[
     {
-        "text": "Admin1",
-        "callback_data": "8795d24a482107eb"
+        "text": "ارتباط با پاسخگوی ۱",
+        "url": "https://t.me/asazoonbolouki"
     }],
     [{
-        "text": "Admin2",
-        "callback_data": "84bd9e0db75a7150"
+        "text": "ارتباط با پاسخگوی ۲",
+        "url": "https://t.me/asazoonbolouki"
     }],
 ]
