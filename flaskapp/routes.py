@@ -4,6 +4,8 @@ from flask import request, Response
 from flaskapp import app, bot_methods
 from view.Menus import questions_keyboard, admins_contact, answers, enter_name_keyboard
 
+bot_name = "asazoon1_bot"
+
 
 @app.route("/", methods=["GET", "POST"])
 def index():
@@ -129,9 +131,8 @@ def check_name(msg):
     chat_id = msg['message']['chat']['id']
     path = os.path.join(
         "/home/Nb72/dorfak-bot/users", str(chat_id)+".txt")
-    if "<" in name and ">" in name and "_" in name:
-        name = name.replace("<", "")
-        name = name.replace(">", "")
+    if f"{bot_name} /Name:" in name:
+        name = name.replace(f"{bot_name} /Name:", "")
         update_info(path, 2, f"{name}")
         bot_methods.send_message(
             "نام و نام خانوادگی شما با موفقیت ثبت کردید.", chat_id)
