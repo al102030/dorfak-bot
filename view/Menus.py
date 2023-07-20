@@ -1,3 +1,10 @@
+enter_name_keyboard = [[
+    {
+        "text": 'ورود نام خانوادگی',
+        "switch_inline_query_current_chat": '/Name: '
+    }]
+]
+
 questions_keyboard = [[
     {
         "text": "چطور میتوانم سفارش خود راثبت کنم؟",

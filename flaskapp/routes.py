@@ -2,7 +2,7 @@
 import os
 from flask import request, Response
 from flaskapp import app, bot_methods
-from view.Menus import questions_keyboard, admins_contact, answers
+from view.Menus import questions_keyboard, admins_contact, answers, enter_name_keyboard
 
 
 @app.route("/", methods=["GET", "POST"])
@@ -113,8 +113,9 @@ def phone_number_check(msg):
             if not is_in_file:
                 path = f"/home/Nb72/dorfak-bot/users/{chat_id}.txt"
                 update_info(path, 1, f"{number}\n0")
-                bot_methods.send_message(
-                    "شماره تلفن همراه شما با موفقیت ثبت کردید.\n لطفا نام و نام خانوادگی خود را به شکل زیر وارد نمایید.\n نمونه نام: \n <علی_احمدی>", chat_id)
+                inline_keyboard = enter_name_keyboard
+                bot_methods.send_message_with_keyboard(
+                    "شماره تلفن همراه شما با موفقیت ثبت کردید.\n لطفا نام و نام خانوادگی خود را به شکل زیر وارد نمایید.\n نمونه نام: \n <علی_احمدی>", chat_id, inline_keyboard)
             else:
                 bot_methods.send_message(
                     "شماره تلفن همراه شما قبلا ثبت شده است.\n لطفا نام و نام خانوادگی خود را به شکل زیر وارد نمایید.\n نمونه نام: \n <علی_احمدی>", chat_id)
