@@ -12,6 +12,7 @@ def index():
         is_text = text_check(msg)
         if is_text:
             phone_number_check(msg)
+            check_name(msg)
             chat_id = msg['message']['chat']['id']
             if is_text == "/start":
                 greeting(msg)
