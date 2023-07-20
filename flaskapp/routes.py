@@ -106,42 +106,40 @@ def phone_number_check(msg):
                         break
             if not is_in_file:
                 path = f"/home/Nb72/dorfak-bot/users/{chat_id}.txt"
-                update_phone_number(path, 1, f"{number}\n")
+                update_info(path, 1, f"{number}\n")
                 # with open(f"/home/Nb72/dorfak-bot/users/{chat_id}.txt", "a", encoding="utf-8") as file:
                 #     file.write(f"{number}\n")
                 bot_methods.send_message(
-                    "شماره تلفن همراه شما با موفقیت ثبت کردید.\n لطفا نام و نام خانوادگی خود را وارد نمایید.", chat_id)
+                    "شماره تلفن همراه شما با موفقیت ثبت کردید.\n لطفا نام و نام خانوادگی خود را به شکل زیر وارد نمایید.\n نمونه نام: \n <علی_احمدی>", chat_id)
             else:
                 bot_methods.send_message(
-                    "شماره تلفن همراه شما قبلا ثبت شده است.\n لطفا نام و نام خانوادگی خود را وارد نمایید.", chat_id)
+                    "شماره تلفن همراه شما قبلا ثبت شده است.\n لطفا نام و نام خانوادگی خود را به شکل زیر وارد نمایید.\n نمونه نام: \n <علی_احمدی>", chat_id)
         else:
             bot_methods.send_message(
                 "شماره ای که وارد کرده اید نادرست است لطفا شماره تلفن همراه خود را به صورت صحیح وارد کنید\n مانند نمونه زیر\n نمونه: 09123456789", chat_id)
 
 
-def add_name():
-    pass
+def check_name(msg):
+    name = msg['message']['text']
+    chat_id = msg['message']['chat']['id']
+    path = os.path.join(
+        "/home/Nb72/dorfak-bot/users", str(chat_id)+".txt")
+    if "<" in name and ">" in name and "_" in name:
+        name = name.replace("<", "")
+        name = name.replace(">", "")
+        update_info(path, 2, f"{name}\n")
+        bot_methods.send_message(
+            "نام و نام خانوادگی شما با موفقیت ثبت کردید.", chat_id)
+        with open(path, "r", encoding="utf-8") as file:
+            lines = file.readlines()
+        bot_methods.send_message(
+            f"شما با اطلاعات زیر در آسازون ثبت نام شدید:\n{lines}", chat_id)
 
 
-def read_specific_line(file_path, line_number):
-    with open(file_path, 'r', encoding="utf-8") as file:
-        lines = file.readlines()
-        if line_number <= len(lines):
-            return lines[line_number - 1]
-        else:
-            return "Line number out of range"
-
-# file_path = 'path/to/your/file.txt'
-# line_number = 3  # The line number you want to check
-
-# line = read_specific_line(file_path, line_number)
-# print(line)
-
-
-def update_phone_number(file_path, line_number, new_phone_number):
+def update_info(file_path, line_number, new_data):
     with open(file_path, "r", encoding="utf-8") as file:
         lines = file.readlines()
-        lines[line_number] = new_phone_number
+        lines[line_number] = new_data
 
     with open(file_path, "w", encoding="utf-8") as file:
         file.writelines(lines)
