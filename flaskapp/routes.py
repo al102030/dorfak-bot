@@ -113,7 +113,7 @@ def phone_number_check(msg):
             if not is_in_file:
                 path = f"/home/Nb72/dorfak-bot/users/{chat_id}.txt"
                 update_info(path, 1, f"{number}\n0")
-                inline_keyboard = enter_name_keyboard
+                inline_keyboard = admins_contact
                 bot_methods.send_message_with_keyboard(
                     "شماره تلفن همراه شما با موفقیت ثبت کردید.\n لطفا نام و نام خانوادگی خود را به شکل زیر وارد نمایید.\n نمونه نام: \n <علی_احمدی>", chat_id, inline_keyboard)
             else:
