@@ -141,7 +141,6 @@ def read_specific_line(file_path, line_number):
 def update_phone_number(file_path, line_number, new_phone_number):
     with open(file_path, "r", encoding="utf-8") as file:
         lines = file.readlines()
-        new_phone_number = "This is the new text for line 10."
         lines[line_number] = new_phone_number
 
     with open(file_path, "w", encoding="utf-8") as file:
