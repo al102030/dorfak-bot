@@ -38,7 +38,7 @@ answers = {
 admins_contact = [[
     {
         "text": "ارتباط با پاسخگوی ۱",
-        "url": "https://t.me/asazoonbolouki"
+        "url": "https://t.me/moshaverasazoon"
     }],
     [{
         "text": "ارتباط با پاسخگوی ۲",
