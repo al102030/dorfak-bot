@@ -23,11 +23,11 @@ def index():
             elif is_text == "/question":
                 questions(chat_id)
 
-            # user_path = os.path.join(
-            #     "/home/Nb72/dorfak-bot/users", str(chat_id)+".txt")
-            # if os.path.exists(user_path):
-            #     phone_number_check(msg)
-            #     check_name(msg)
+            user_path = os.path.join(
+                "/home/Nb72/dorfak-bot/users", str(chat_id)+".txt")
+            if os.path.exists(user_path):
+                phone_number_check(msg)
+                check_name(msg)
 
         elif "callback_query" in msg:
             answers_questions(msg)
@@ -56,7 +56,7 @@ def enroll(chat_id):
         "/home/Nb72/dorfak-bot/users", str(chat_id)+".txt")
     if not os.path.exists(user_path):
         with open(user_path, "w", encoding="utf-8") as file:
-            file.write(str(chat_id)+"\n")
+            file.write(str(chat_id)+"\n0")
     bot_methods.send_message("لطفا شماره همراه خود را وارد نمایید.", chat_id)
 
 
@@ -145,7 +145,7 @@ def check_name(msg):
 def update_info(file_path, line_number, new_data):
     with open(file_path, "r", encoding="utf-8") as file:
         lines = file.readlines()
-        lines[line_number] = new_data
+        lines[line_number] = new_data+"\n0"
 
     with open(file_path, "w", encoding="utf-8") as file:
         file.writelines(lines)
