@@ -136,8 +136,10 @@ def check_name(msg):
             "نام و نام خانوادگی شما با موفقیت ثبت کردید.", chat_id)
         with open(path, "r", encoding="utf-8") as file:
             lines = file.readlines()
+        for item in lines:
+            info += item.replace("\n", "")+"\n"
         bot_methods.send_message(
-            f"شما با اطلاعات زیر در آسازون ثبت نام شدید:\n{lines}", chat_id)
+            f"شما با اطلاعات زیر در آسازون ثبت نام شدید:\n{info}", chat_id)
 
 
 def update_info(file_path, line_number, new_data):
