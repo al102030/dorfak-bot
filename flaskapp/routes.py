@@ -139,6 +139,7 @@ def check_name(msg):
         info = ""
         for item in lines:
             info += item.replace("\n", "")
+            info += "\n"
         bot_methods.send_message(
             f"شما با اطلاعات زیر در آسازون ثبت نام شدید:\n{info}", chat_id)
 
