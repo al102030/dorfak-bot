@@ -115,7 +115,7 @@ def phone_number_check(msg):
                 update_info(path, 1, f"{number}\n0")
                 inline_keyboard = enter_name_keyboard
                 bot_methods.send_message_with_keyboard(
-                    "دکمه زیر را فشده و نام و نام خانوادگی خود را وارد نمایید.", chat_id, inline_keyboard)
+                    "دکمه زیر را فشرده و نام و نام خانوادگی خود را وارد نمایید.", chat_id, inline_keyboard)
             else:
                 bot_methods.send_message(
                     "شماره تلفن همراه شما قبلا ثبت شده است.\n لطفا نام و نام خانوادگی خود را به شکل زیر وارد نمایید.\n نمونه نام: \n <علی_احمدی>", chat_id)
