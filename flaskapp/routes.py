@@ -23,11 +23,11 @@ def index():
             elif is_text == "/question":
                 questions(chat_id)
 
-            user_path = os.path.join(
-                "/home/Nb72/dorfak-bot/users", str(chat_id)+".txt")
-            if os.path.exists(user_path):
-                phone_number_check(msg)
-                check_name(msg)
+            # user_path = os.path.join(
+            #     "/home/Nb72/dorfak-bot/users", str(chat_id)+".txt")
+            # if os.path.exists(user_path):
+            #     phone_number_check(msg)
+            #     check_name(msg)
 
         elif "callback_query" in msg:
             answers_questions(msg)
@@ -112,7 +112,7 @@ def phone_number_check(msg):
                         break
             if not is_in_file:
                 path = f"/home/Nb72/dorfak-bot/users/{chat_id}.txt"
-                update_info(path, 1, f"{number}\n")
+                update_info(path, 1, f"{number}\n0")
                 # with open(f"/home/Nb72/dorfak-bot/users/{chat_id}.txt", "a", encoding="utf-8") as file:
                 #     file.write(f"{number}\n")
                 bot_methods.send_message(
@@ -133,7 +133,7 @@ def check_name(msg):
     if "<" in name and ">" in name and "_" in name:
         name = name.replace("<", "")
         name = name.replace(">", "")
-        update_info(path, 2, f"{name}\n")
+        update_info(path, 2, f"{name}")
         bot_methods.send_message(
             "نام و نام خانوادگی شما با موفقیت ثبت کردید.", chat_id)
         with open(path, "r", encoding="utf-8") as file:
@@ -145,7 +145,7 @@ def check_name(msg):
 def update_info(file_path, line_number, new_data):
     with open(file_path, "r", encoding="utf-8") as file:
         lines = file.readlines()
-        lines[line_number] = new_data+"\n0"
+        lines[line_number] = new_data+"\n"
 
     with open(file_path, "w", encoding="utf-8") as file:
         file.writelines(lines)
