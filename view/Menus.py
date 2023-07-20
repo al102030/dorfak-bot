@@ -1,7 +1,7 @@
 enter_name_keyboard = [[
     {
         "text": "ورود نام خانوادگی",
-        "switch_inline_query_current_chat": '/Name: '
+        "callback_data": '/Name: '
     }],
 ]
 
