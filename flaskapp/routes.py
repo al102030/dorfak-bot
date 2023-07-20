@@ -14,8 +14,8 @@ def index():
             chat_id = msg['message']['chat']['id']
             if is_text == "/start":
                 greeting(msg)
-            elif is_text == "/enroll":
-                enroll(chat_id)
+            elif is_text == "/registration":
+                registration(chat_id)
             elif is_text == "/link":
                 store_links(chat_id)
             elif is_text == "/contacts":
@@ -51,7 +51,7 @@ def greeting(msg):
     bot_methods.send_message(greet, chat_id)
 
 
-def enroll(chat_id):
+def registration(chat_id):
     user_path = os.path.join(
         "/home/Nb72/dorfak-bot/users", str(chat_id)+".txt")
     if not os.path.exists(user_path):
