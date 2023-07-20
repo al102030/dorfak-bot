@@ -137,7 +137,7 @@ def check_name(msg):
         with open(path, "r", encoding="utf-8") as file:
             lines = file.readlines()
         for item in lines:
-            info += item.replace("\n", "")+"\n"
+            info += item.replace("\n", "")
         bot_methods.send_message(
             f"شما با اطلاعات زیر در آسازون ثبت نام شدید:\n{info}", chat_id)
 
