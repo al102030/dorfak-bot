@@ -1,8 +1,8 @@
 enter_name_keyboard = [[
     {
-        "text": 'ورود نام خانوادگی',
+        "text": "ورود نام خانوادگی",
         "switch_inline_query_current_chat": '/Name: '
-    }]
+    }],
 ]
 
 questions_keyboard = [[
