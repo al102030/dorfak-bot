@@ -50,7 +50,7 @@ def enroll(chat_id):
         "/home/Nb72/dorfak-bot/users", str(chat_id)+".txt")
     if not os.path.exists(user_path):
         with open(user_path, "w", encoding="utf-8") as file:
-            file.write(str(chat_id))
+            file.write(str(chat_id)+"\n")
     bot_methods.send_message("لطفا شماره همراه خود را وارد نمایید.", chat_id)
 
 
@@ -105,8 +105,10 @@ def phone_number_check(msg):
                         is_in_file = True
                         break
             if not is_in_file:
-                with open(f"/home/Nb72/dorfak-bot/users/{chat_id}.txt", "a", encoding="utf-8") as file:
-                    file.write(f"\n{number}")
+                path = f"/home/Nb72/dorfak-bot/users/{chat_id}.txt"
+                update_phone_number(path, 1, f"{number}\n")
+                # with open(f"/home/Nb72/dorfak-bot/users/{chat_id}.txt", "a", encoding="utf-8") as file:
+                #     file.write(f"{number}\n")
                 bot_methods.send_message(
                     "شماره تلفن همراه شما با موفقیت ثبت کردید.\n لطفا نام و نام خانوادگی خود را وارد نمایید.", chat_id)
             else:
@@ -119,3 +121,29 @@ def phone_number_check(msg):
 
 def add_name():
     pass
+
+
+def read_specific_line(file_path, line_number):
+    with open(file_path, 'r', encoding="utf-8") as file:
+        lines = file.readlines()
+        if line_number <= len(lines):
+            return lines[line_number - 1]
+        else:
+            return "Line number out of range"
+
+# file_path = 'path/to/your/file.txt'
+# line_number = 3  # The line number you want to check
+
+# line = read_specific_line(file_path, line_number)
+# print(line)
+
+
+def update_phone_number(file_path, line_number, new_phone_number):
+    with open(file_path, "r", encoding="utf-8") as file:
+        lines = file.readlines()
+        line_number = line_number
+        new_phone_number = "This is the new text for line 10."
+        lines[line_number] = new_phone_number
+
+    with open(file_path, "w", encoding="utf-8") as file:
+        file.writelines(lines)
