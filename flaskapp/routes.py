@@ -113,8 +113,6 @@ def phone_number_check(msg):
             if not is_in_file:
                 path = f"/home/Nb72/dorfak-bot/users/{chat_id}.txt"
                 update_info(path, 1, f"{number}\n0")
-                # with open(f"/home/Nb72/dorfak-bot/users/{chat_id}.txt", "a", encoding="utf-8") as file:
-                #     file.write(f"{number}\n")
                 bot_methods.send_message(
                     "شماره تلفن همراه شما با موفقیت ثبت کردید.\n لطفا نام و نام خانوادگی خود را به شکل زیر وارد نمایید.\n نمونه نام: \n <علی_احمدی>", chat_id)
             else:
@@ -133,7 +131,7 @@ def check_name(msg):
     if "<" in name and ">" in name and "_" in name:
         name = name.replace("<", "")
         name = name.replace(">", "")
-        update_info(path, 2, f"{name}")
+        update_info(path, 2, name)
         bot_methods.send_message(
             "نام و نام خانوادگی شما با موفقیت ثبت کردید.", chat_id)
         with open(path, "r", encoding="utf-8") as file:
