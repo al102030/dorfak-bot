@@ -131,7 +131,7 @@ def check_name(msg):
     if "<" in name and ">" in name and "_" in name:
         name = name.replace("<", "")
         name = name.replace(">", "")
-        update_info(path, 2, name)
+        update_info(path, 2, f"{name}\n0")
         bot_methods.send_message(
             "نام و نام خانوادگی شما با موفقیت ثبت کردید.", chat_id)
         with open(path, "r", encoding="utf-8") as file:
