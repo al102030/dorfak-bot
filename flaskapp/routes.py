@@ -22,8 +22,13 @@ def index():
                 contact(chat_id)
             elif is_text == "/question":
                 questions(chat_id)
-            # phone_number_check(msg)
-            # check_name(msg)
+
+            user_path = os.path.join(
+                "/home/Nb72/dorfak-bot/users", str(chat_id)+".txt")
+            if os.path.exists(user_path):
+                phone_number_check(msg)
+                check_name(msg)
+
         elif "callback_query" in msg:
             answers_questions(msg)
         return Response('ok', status=200)
