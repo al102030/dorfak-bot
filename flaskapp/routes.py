@@ -11,8 +11,6 @@ def index():
         msg = request.get_json()
         is_text = text_check(msg)
         if is_text:
-            phone_number_check(msg)
-            check_name(msg)
             chat_id = msg['message']['chat']['id']
             if is_text == "/start":
                 greeting(msg)
@@ -24,6 +22,8 @@ def index():
                 contact(chat_id)
             elif is_text == "/question":
                 questions(chat_id)
+            phone_number_check(msg)
+            check_name(msg)
         elif "callback_query" in msg:
             answers_questions(msg)
         return Response('ok', status=200)
