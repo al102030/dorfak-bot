@@ -131,8 +131,8 @@ def check_name(msg):
     chat_id = msg['message']['chat']['id']
     path = os.path.join(
         "/home/Nb72/dorfak-bot/users", str(chat_id)+".txt")
-    if f"{bot_name} /Name:" in name:
-        name = name.replace(f"{bot_name} /Name:", "")
+    if f"@{bot_name} /Name:" in name:
+        name = name.replace(f"@{bot_name} /Name:", "")
         update_info(path, 2, f"{name}")
         bot_methods.send_message(
             "نام و نام خانوادگی شما با موفقیت ثبت کردید.", chat_id)
