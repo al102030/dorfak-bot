@@ -120,9 +120,8 @@ def phone_number_check(msg):
                 bot_methods.send_message_with_keyboard(
                     "دکمه زیر را فشرده و نام و نام خانوادگی خود را وارد نمایید.", chat_id, inline_keyboard)
             else:
-                bot_methods.send_message(
-                    "شماره تلفن همراه شما قبلا ثبت شده است.\n لطفا نام و نام خانوادگی خود را به شکل زیر وارد نمایید.\n نمونه نام: \n <علی_احمدی>", chat_id)
-        else:
+                bot_methods.send_message_with_keyboard(
+                    "دکمه زیر را فشرده و نام و نام خانوادگی خود را وارد نمایید.", chat_id, inline_keyboard)        else:
             bot_methods.send_message(
                 "شماره ای که وارد کرده اید نادرست است لطفا شماره تلفن همراه خود را به صورت صحیح وارد کنید\n مانند نمونه زیر\n نمونه: 09123456789", chat_id)
 
@@ -145,7 +144,7 @@ def check_name(msg):
             info += "\n"
         bot_methods.send_message(
             f"شما با اطلاعات زیر در آسازون ثبت نام شدید:\n{info}", chat_id)
-        bot_methods.forward_message("{info}", 5250278182, "-1001971910516")
+        bot_methods.forward_message(f"{info}", "-1001971910516", "5250278182")
 
 
 def update_info(file_path, line_number, new_data):
