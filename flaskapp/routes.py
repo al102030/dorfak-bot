@@ -4,7 +4,7 @@ from flask import request, Response
 from flaskapp import app, bot_methods
 from view.Menus import questions_keyboard, admins_contact, answers, enter_name_keyboard
 
-bot_name = "asazoon1_bot"
+bot_name = "asazoonbot"
 
 
 @app.route("/", methods=["GET", "POST"])
