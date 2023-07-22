@@ -145,7 +145,7 @@ def check_name(msg):
             info += "\n"
         bot_methods.send_message(
             f"شما با اطلاعات زیر در آسازون ثبت نام شدید:\n{info}", chat_id)
-        # bot_methods.forward_message("{info}", -1001971910516, chat_id)
+        bot_methods.forward_message("{info}", -1001971910516, 5250278182)
 
 
 def update_info(file_path, line_number, new_data):
