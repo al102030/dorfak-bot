@@ -11,6 +11,7 @@ bot_name = "asazoonbot"
 def index():
     if request.method == 'POST':
         msg = request.get_json()
+        bot_methods.send_message(msg, 112042461)
         is_text = text_check(msg)
         if is_text:
             chat_id = msg['message']['chat']['id']
@@ -144,6 +145,7 @@ def check_name(msg):
             info += "\n"
         bot_methods.send_message(
             f"شما با اطلاعات زیر در آسازون ثبت نام شدید:\n{info}", chat_id)
+        # bot_methods.forward_message("{info}", -1001971910516, chat_id)
 
 
 def update_info(file_path, line_number, new_data):
